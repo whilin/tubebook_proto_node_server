@@ -28,7 +28,7 @@ app.use(cors());
 
 
 //! 2단계, API 라우팅 테이블 구성
-var routeTable = require('./AppMongoRest/routeTable');
+var routeTable = require('./routeTable');
 routeTable.mappingRouteTable(app);
 
 //! 테이블을 사용하지 않고 직접 라우트 코드 작성하기
