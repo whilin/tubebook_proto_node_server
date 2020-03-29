@@ -45,7 +45,7 @@ const options = {
 
 //! 3단계, 서버 실행
 var serverConfig = require('./serverConfig');
-https.createServer(app).listen(serverConfig.port, //, serverConfig.hostname, 
+https.createServer(options, app).listen(serverConfig.port, //, serverConfig.hostname, 
   function()
   {
       console.log(`Server running at https://${serverConfig.hostname}:${serverConfig.port}/`);
