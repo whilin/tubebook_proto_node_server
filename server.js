@@ -1,4 +1,6 @@
 var http = require('http');
+var https = require('https');
+var fs = require('fs');
 
 var express = require('express');
 var favicon = require('serve-favicon');
@@ -36,13 +38,17 @@ app.get('/hello/:db/:collection', function(req, res){
   res.send("Hi~, Fuck you");
 });
 
+const options = {
+	key: fs.readFileSync('./keys/private.pem'),
+	cert: fs.readFileSync('./keys/public.pem')
+};
 
 //! 3단계, 서버 실행
 var serverConfig = require('./serverConfig');
-http.createServer(app).listen(serverConfig.port, //, serverConfig.hostname, 
+https.createServer(app).listen(serverConfig.port, //, serverConfig.hostname, 
   function()
   {
-      console.log(`Server running at http://${serverConfig.hostname}:${serverConfig.port}/`);
+      console.log(`Server running at https://${serverConfig.hostname}:${serverConfig.port}/`);
   });
 
 
